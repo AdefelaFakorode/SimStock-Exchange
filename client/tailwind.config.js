@@ -2,7 +2,15 @@
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'text': '#e4d5f6',
+        'background': '#0a0411',
+        'primary': '#af85e5',
+        'secondary': '#8a1e85',
+        'accent': '#d43ab8',
+      },
+    },
   },
   plugins: [],
   screens: {
