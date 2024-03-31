@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import LSI_NavBar from './components/LSI_NavBar/LSI_NavBar.jsx'
+import LPNavBar from './components/LSI_NavBar/LPNavBar.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LSI_NavBar></LSI_NavBar>
+    <LPNavBar></LPNavBar>
     <App />
   </React.StrictMode>,
 )

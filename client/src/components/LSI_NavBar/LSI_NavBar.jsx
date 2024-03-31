@@ -1,20 +1,13 @@
-import { useState } from "react"
-
-const NavBar = () => {
-  const [nav, setNav] = useState(false);
-  const handleClick = () => setNav(!nav);
-}
-
 function LSI_NavBar() {
   return (
-    <div className="w-full h-[80px] bg-background flex justify-start align-middle">
-      <div>
-      <button className="bg-primary hover:bg-blue-700 text-text font-bold py-2 px-4 rounded">
-  Home
-</button>
+    <div className="w-full h-[80px] bg-background flex items-center">
+      <div className=" px-5 flex items-center">
+        <button className="bg-primary hover:bg-[#7f60a3] text-text font-bold py-1 px-3 rounded">
+          Home
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default LSI_NavBar
+export default LSI_NavBar;
