@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function LPNavBar() {
   return (
     <div className="w-full h-[80px] bg-background flex items-center justify-end">
