@@ -1,4 +1,5 @@
-import {useClerk} from '@clerk/clerk-react';
+import {useClerk, SignedIn, SignedOut, SignInButton, UserButton} from '@clerk/clerk-react';
+
 
 function LPNavBar() {
   const {openSignUp, openSignIn} = useClerk(); //trigger clerk sign up n sign in
@@ -6,6 +7,7 @@ function LPNavBar() {
   return (
     <div className="w-full h-[80px] bg-background flex items-center justify-end">
       <div className="px-5 flex items-center space-x-6">
+      <SignedOut>
         <button 
         onClick={() => openSignUp()}
         className="bg-primary hover:bg-[#7f60a3] text-text font-bold py-1 px-3 rounded">
@@ -18,6 +20,12 @@ function LPNavBar() {
         >
           Sign In
         </button>
+        </ SignedOut>
+
+        <SignedIn>
+          <UserButton />
+        </ SignedIn>
+
       </div>
     </div>
   );
