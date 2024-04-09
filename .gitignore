@@ -1,0 +1,33 @@
+# Logs
+client/logs
+client/*.log
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/pnpm-debug.log*
+client/lerna-debug.log*
+
+# Dependencies
+client/node_modules
+
+# Build
+client/dist
+client/dist-ssr
+*.local
+
+# Environment files
+client/.env
+client/.env.local
+.local
+
+# Editor directories and files
+client/.vscode/*
+!.vscode/extensions.json # If this is meant to be at the root, no change needed
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
