@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+{/*dont delete, I use to see the margins - adefela*/}
+
+*{ 
+    border: 1px solid red;
+}
