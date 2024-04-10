@@ -1,4 +1,4 @@
-//import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import LPNavBar from './components/LSI_NavBar/LPNavBar';
 import LandingPage from './views/LandingPage';
 import NewsFeed from "./views/NewsFeed";
@@ -10,18 +10,10 @@ function App() {
 
   return (
     <>
-{/*
-      <div className="absolute top-5 right-2 text-sky-400 text-xl text-center " >
-        <SignedOut>
-          <SignInButton mode="modal"/>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </div>
-*/}
-      <NewsFeed />
-      {/* <LandingPage /> */}
+
+      <LPNavBar />
+      {/* <NewsFeed /> */}
+      <LandingPage />
     </>
   )
 }

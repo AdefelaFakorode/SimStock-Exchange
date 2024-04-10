@@ -1,4 +1,5 @@
 import SimStockLogo from "../assets/SimStockLogo.png";
+
 function LandingPage() {
   return (
     <section className="min-h-screen bg-white">
