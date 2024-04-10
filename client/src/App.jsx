@@ -18,7 +18,6 @@ function App() {
         </SignedIn>
       </div>
 */}
-
       <LandingPage />
     </>
   )
