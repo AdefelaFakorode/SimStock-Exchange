@@ -9,9 +9,9 @@ function LPNavBar() {
     <div className="w-full h-[80px] bg-background flex items-center justify-end">
       <div className="px-5 flex items-center space-x-6">
         <div >
-        <Link to={'/news'} className='rounded bg-blue-500 hover:bg-blue-700 text-white xl:text-xl font-bold'>News</Link>
-        <Link to={'/'} className='rounded bg-blue-500 hover:bg-blue-700 text-white xl:text-xl font-bold'>Home</Link>
-
+          <Link to={'/'} className='rounded bg-blue-500 hover:bg-blue-700 text-white xl:text-xl font-bold'>Home</Link>
+          <Link to={'/news'} className='rounded bg-blue-500 hover:bg-blue-700 text-white xl:text-xl font-bold'>News</Link>
+          <Link to={'/trade'} className='rounded bg-blue-500 hover:bg-blue-700 text-white xl:text-xl font-bold'>Trading</Link>
         </div>
       <SignedOut>
         <button 
