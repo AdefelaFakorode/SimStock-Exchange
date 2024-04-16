@@ -8,7 +8,7 @@ function LPNavBar() {
   return (
     <div className="w-full h-[80px] bg-background flex items-center justify-end">
       <div className="px-5 flex items-center space-x-6">
-        <div className='bg-primary space-x-1 '>
+        <div className='bg-primary space-x-1'>
         <Link to={'/news'}>News</Link>
         <Link to={'/'}>Home</Link>
 

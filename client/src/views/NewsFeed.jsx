@@ -1,6 +1,7 @@
 import react from "react";
 import NewsArticle from "../components/NewsArticle.jsx";
 import { useEffect, useState } from "react";
+import LPNavBar from '../components/LSI_NavBar/LPNavBar';
 
 const today = new Date();
 today.setDate(1);
@@ -46,6 +47,8 @@ function NewsFeed() {
     return (
         <>
         <main className="bg-gray-800 p-4">
+        <LPNavBar />
+
             <div className="container mx-auto text-center">
                 <h1 className="text-[#af85e5] text-3xl font-bold p-2 m-2">News Feed</h1>
             </div>

@@ -8,7 +8,6 @@ function NewsArticle(props) {
 
     return (
         <>
-            <LPNavBar />
             <div className="container p-1 my-4">
                 <h2 className="text-lg md:text-xl lg:text-2xl text-[#8a1e85] font-bold underline p-2 text-center">{props.title}</h2>
                 <div className="p-2 text-xs md:text-sm lg:text-lg flex justify-between text-[#e4d5f6]">
