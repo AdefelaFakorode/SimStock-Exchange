@@ -2,7 +2,6 @@ import react from "react";
 import NewsArticle from "../components/NewsArticle.jsx";
 import { useEffect, useState } from "react";
 import LPNavBar from '../components/LSI_NavBar/LPNavBar';
-
 const today = new Date();
 today.setDate(1);
 const dateString = today.toISOString().split('T')[0];
