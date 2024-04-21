@@ -4,12 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'text': '#e4d5f6',
-        'background': '#0a0411',
-        'primary': '#af85e5',
-        'secondary': '#8a1e85',
-        'accent': '#d43ab8',
+        'text': '#878787',
+        'background': '#0C0D0E',
+        'buttonColor': '#E0DACD',
       },
+
+      fontFamily: {
+        'sans': ['GeneralSans', 'sans-serif'],
+    }
     },
   },
   plugins: [],
