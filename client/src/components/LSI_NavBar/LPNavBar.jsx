@@ -16,13 +16,13 @@ function LPNavBar() {
       <SignedOut>
         <button 
         onClick={() => openSignUp()}
-        className="bg-primary hover:bg-[#7f60a3] text-text font-bold py-1 px-3 rounded">
+        className="bg-buttonColor text-black font-bold py-1 px-3 rounded">
           Sign Up
         </button>
 
         <button
           onClick={() => openSignIn()}
-          className="bg-primary hover:bg-[#7f60a3] text-text font-bold py-1 px-3 rounded"
+          className="bg-buttonColor text-black font-bold py-1 px-3 rounded"
         >
           Sign In
         </button>
