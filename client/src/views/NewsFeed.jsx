@@ -2,59 +2,94 @@ import react from "react";
 import NewsArticle from "../components/NewsArticle.jsx";
 import { useEffect, useState } from "react";
 import LPNavBar from '../components/LSI_NavBar/LPNavBar';
-const today = new Date();
-today.setDate(1);
-const dateString = today.toISOString().split('T')[0];
 
-const URL = `https://newsapi.org/v2/everything?` +
-`q=(Google AND stock) OR (Amazon AND stock) OR (Airbnb AND stock) OR (PayPal AND stock) OR (Adobe AND stock)&` +
-`from=${dateString}&` +
-`sortBy=popularity&` +
-`apiKey=3f52d2fffebe4de4ab5a29d0c3d8af42`;
+const refreshRate = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 function NewsFeed() {
     const [newsArticles, setNewsArticles] = useState([]);
+    const [numArticles, setNumArticles] = useState(5);
 
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            let response = await fetch(URL);
-            let data = await response.json();
+      const fetchArticles = async () => {
 
-            const filteredArticles = data.articles.filter(article => 
-                article.urlToImage !== null && 
-                article.author !== null && 
-                article.description !== null && 
-                article.source && article.source.id !== null && 
-                article.source.name !== null && 
-                article.title !== null && 
-                article.url !== null
-              );
-            setNewsArticles(filteredArticles);
-            console.log("Data was loaded in Successfully:", filteredArticles);
-          } catch (error) {
-            console.log("Error data was not loaded in Successfully:", error);
-          }
-        };
-        fetchData();
-      }, []);
+      const date = new Date();
+      const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+      const dateString = firstDayOfMonth.toISOString().split('T')[0];
+      const URL = `https://newsapi.org/v2/everything?` +
+                  `q=(GOOGL AND stock) OR 
+                  (AMZN AND stock) OR 
+                  (ABNB AND stock) OR 
+                  (PYPL AND stock) OR 
+                  (ADBE AND stock) OR 
+                  (AAPL AND stock) OR 
+                  (MSFT AND stock) OR 
+                  (NFLX AND stock) OR 
+                  (TSLA AND stock)&` +
+                  `from=${dateString}&` +
+                  `sortBy=popularity&` +
+                  `apiKey=3f52d2fffebe4de4ab5a29d0c3d8af42`;
 
-      if (newsArticles.length === 0) {
+        try {
+          const response = await fetch(URL);
+          const data = await response.json();
+          const filteredArticles = data.articles.filter(article => 
+            article.urlToImage &&
+            article.author &&
+            article.description &&
+            article.source.name &&
+            article.title &&
+            article.url
+          );
+          setNewsArticles(filteredArticles);
+          console.log("Data was loaded successfully:", filteredArticles);
+        } catch (error) {
+          console.log("Error, data was not loaded successfully:", error);
+        }
+      };
+
+      fetchArticles();
+      const interval = setInterval(fetchArticles, refreshRate);
+      return () => clearInterval(interval);
+  }, []);
+
+    if (newsArticles.length === 0) {
         return <div>No articles found</div>;
-      }
+    }
+
+    function handleClick(){
+      setNumArticles(numArticles + 3);
+    }
 
     return (
         <>
-        <main className="bg-gray-800 p-4">
-        <LPNavBar />
+        <main className="bg-background p-4">
+          <LPNavBar />
 
-            <div className="container mx-auto text-center">
-                <h1 className="text-[#af85e5] text-3xl font-bold p-2 m-2">News Feed</h1>
-            </div>
+          <div className="container mx-auto">
+              <div className="container mx-auto text-center">
+                  <h1 className="text-white text-3xl font-bold p-2 m-2">News Feed</h1>
+              </div>
 
-            <NewsArticle title={newsArticles[0].title} image={newsArticles[0].urlToImage} description={newsArticles[0].description} author={newsArticles[0].author} content={newsArticles[0].content} url={newsArticles[0].url} publish={newsArticles[0].publishedAt} />
-            <NewsArticle title={newsArticles[1].title} image={newsArticles[1].urlToImage} description={newsArticles[1].description} author={newsArticles[1].author} content={newsArticles[1].content} url={newsArticles[1].url} publish={newsArticles[1].publishedAt}/>
-            <NewsArticle title={newsArticles[2].title} image={newsArticles[2].urlToImage} description={newsArticles[2].description} author={newsArticles[2].author} content={newsArticles[2].content} url={newsArticles[2].url} publish={newsArticles[2].publishedAt}/>
+              { newsArticles.slice(0, numArticles).map(article => (
+                    <NewsArticle 
+                      key={article.url}
+                      title={article.title} 
+                      image={article.urlToImage} 
+                      description={article.description} 
+                      author={article.author} 
+                      content={article.content} 
+                      url={article.url} 
+                      publish={article.publishedAt} 
+                    />
+              ))}
+
+              <div className="flex justify-center p-11">
+                <button className="bg-white text-lg font-semibold text-gray-800 py-1 px-2 border border-gray-400 rounded shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-300 ease-in-out" onClick={handleClick}>
+                  Load More Articles
+                </button>
+              </div>
+
+          </div>
         </main>
       </>
     );
