@@ -10,7 +10,7 @@ function Graph_Comp() {
     script.innerHTML = JSON.stringify({
       "symbol": "AAPL",
       "width": "100%",
-      "height": "100%",
+      "height": "100vh",
       "locale": "en",
       "dateRange": "1D",
       "colorTheme": "light",
