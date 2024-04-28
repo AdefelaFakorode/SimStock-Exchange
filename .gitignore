@@ -32,4 +32,4 @@ client/.vscode/*
 *.sw?
 
 .env.local
-
+node_modules/
