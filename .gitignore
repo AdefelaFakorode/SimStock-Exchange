@@ -31,3 +31,5 @@ client/.vscode/*
 *.sln
 *.sw?
 
+.env.local
+
