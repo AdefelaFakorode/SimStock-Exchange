@@ -6,6 +6,7 @@ import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/cle
 import App from './App.jsx';
 import NewsFeed from './views/NewsFeed.jsx';
 import TradingPage from './views/TradingPage.jsx';
+import PastTrades from './views/PastTrades.jsx';
 
 import './index.css';
 
@@ -30,6 +31,19 @@ root.render(
               <>
                 <SignedIn>
                   <TradingPage />
+                </SignedIn>
+                <SignedOut>
+                  <RedirectToSignIn />
+                </SignedOut>
+              </>
+            }
+          />
+          <Route
+            path="/pastTrade"
+            element={
+              <>
+                <SignedIn>
+                  <PastTrades />
                 </SignedIn>
                 <SignedOut>
                   <RedirectToSignIn />

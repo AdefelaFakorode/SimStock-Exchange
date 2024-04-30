@@ -2,6 +2,7 @@ import react from "react";
 import NewsArticle from "../components/NewsArticle.jsx";
 import { useEffect, useState } from "react";
 import LPNavBar from '../components/LSI_NavBar/LPNavBar';
+import Footer from '../components/LSI_NavBar/LSI_Footer.jsx';
 
 const refreshRate = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
@@ -62,8 +63,8 @@ function NewsFeed() {
 
     return (
         <>
+        <LPNavBar />
         <main className="bg-background p-4">
-          <LPNavBar />
 
           <div className="container mx-auto">
               <div className="container mx-auto text-center">
@@ -91,6 +92,7 @@ function NewsFeed() {
 
           </div>
         </main>
+        <Footer />
       </>
     );
 }

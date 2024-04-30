@@ -1,6 +1,7 @@
 import LPNavBar from '../components/LSI_NavBar/LPNavBar';
 import Trending_Comp from '../components/trading_page/Trending_Comp';
 import Graph_Comp from '../components/trading_page/Graph_Comp';
+import Footer from '../components/LSI_NavBar/LSI_Footer.jsx';
 
 function TradingPage() {
     return (
@@ -19,8 +20,6 @@ function TradingPage() {
                 <Trending_Comp />
                 </div>
 
-
-
                 <div className="w-1/2">
                 <Graph_Comp />
                 <div className='flex justify-center space-x-[200px] mt-10'>
@@ -31,6 +30,7 @@ function TradingPage() {
 
                 
             </div>
+            <Footer />
         </>
 
     )
