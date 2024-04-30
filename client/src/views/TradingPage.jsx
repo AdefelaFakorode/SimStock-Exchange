@@ -4,36 +4,26 @@ import Graph_Comp from '../components/trading_page/Graph_Comp';
 import Footer from '../components/LSI_NavBar/LSI_Footer.jsx';
 
 function TradingPage() {
-    return (
-        <>
-            <LPNavBar />
-            <div className='flex justify-end pr-[130px]'>
-                <b>Owned Currency:</b>$100.00
-            </div>
-            <div className='flex justify-end'>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-[190px]">Buy Currency</button>
-            </div>
-
-            <div className="flex">
-
-                <div className="w-1/2">
-                <Trending_Comp />
-                </div>
-
-                <div className="w-1/2">
-                <Graph_Comp />
-                <div className='flex justify-center space-x-[200px] mt-10'>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy Stock</button>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sell Stock</button>
-            </div>
-                </div>
-
-                
-            </div>
-            <Footer />
-        </>
-
-    )
-}
-
-export default TradingPage;
+    
+    return (<div>
+      <LPNavBar/>
+      <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand">
+        <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 bg-neutral-400">
+          <div>Name</div>
+        </div>
+        <div className="md:col-span-2 row-span-4 bg-neutral-400">
+          <div>Chart</div>
+        </div>
+        <div className='bg-neutral-400'>
+          <div>Overview</div>
+        </div>
+        <div className="row-span-2 xl:row-span-3 bg-neutral-400">
+          <div>Details</div>
+        </div>
+      </div>
+<Footer />
+    </div>
+    );
+  }
+  
+  export default TradingPage;
