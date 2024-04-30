@@ -23,7 +23,6 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/news" element={<NewsFeed />} />
-          // protected routes
           <Route
             path="/trade"
             element={
