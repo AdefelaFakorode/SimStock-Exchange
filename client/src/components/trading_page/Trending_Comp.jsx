@@ -11,16 +11,16 @@ function TradingViewWidget() {
       script.async = true;
       script.innerHTML = JSON.stringify({
         "colorTheme": "light",
-  "dateRange": "12M",
-  "exchange": "US",
-  "showChart": false,
-  "locale": "en",
-  "width": "100%",
-  "height": "100%",
-  "largeChartUrl": "",
-  "isTransparent": false,
-  "showSymbolLogo": false,
-  "showFloatingTooltip": false
+        "dateRange": "12M",
+        "exchange": "US",
+        "showChart": false,
+        "locale": "en",
+        "width": "100%",
+        "height": "100%",
+        "largeChartUrl": "",
+        "isTransparent": false,
+        "showSymbolLogo": true,
+        "showFloatingTooltip": false
       });
 
       document.getElementById("tradingview-widget-container").appendChild(script);
