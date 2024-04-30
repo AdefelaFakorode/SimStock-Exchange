@@ -8,7 +8,7 @@ function LPNavBar() {
     <div className="w-full h-[80px] bg-white flex justify-between items-center rounded px-5 shadow-md border border-b-black border-b-2">
       <div className="flex items-center">
         <img src="./src/assets/SimStock-Logo.png" alt="SimStock Logo" className="h-10 w-auto" />
-        <div className="font-bold ml-3 text-xl">
+        <div className="font-bold ml-3 text-3xl">
           <p>SimStock Exchange</p>
         </div>
       </div>

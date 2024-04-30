@@ -25,10 +25,6 @@ function LandingPage() {
               All-in-one Platform that helps investors practice their trading skills.
             </p>
             {/* Button */}
-            {/* <button className="font-sans font-medium text-black mt-6 xl:mt-8 xl:text-2xl bg-buttonColor py-3 px-16 xl:py-5 xl:px-40 rounded">
-              Start Trading →
-            </button> */}
-
             <Link to={'/trade'} className='font-sans font-medium text-black mt-6 xl:mt-8 xl:text-2xl bg-buttonColor py-3 px-16 xl:py-5 xl:px-40 rounded'>Start Trading →</Link>
           </div>
         </div>
