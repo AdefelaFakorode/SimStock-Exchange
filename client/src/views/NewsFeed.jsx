@@ -16,6 +16,7 @@ function NewsFeed() {
       const date = new Date();
       const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
       const dateString = firstDayOfMonth.toISOString().split('T')[0];
+      /*Update in the future so this querys based on the users purchased stocks as well */
       const URL = `https://newsapi.org/v2/everything?` +
                   `q=(GOOGL AND stock) OR 
                   (AMZN AND stock) OR 
@@ -67,9 +68,10 @@ function NewsFeed() {
         <main className="bg-background p-4">
 
           <div className="container mx-auto">
-              <div className="container mx-auto text-center">
-                  <h1 className="text-white text-3xl font-bold p-2 m-2">News Feed</h1>
-              </div>
+            <div className="container mx-auto p-4 m-2 rounded-lg shadow-xl text-center">
+              <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold underline p-2">News Feed</h1>
+            </div>
+
 
               { newsArticles.slice(0, numArticles).map(article => (
                     <NewsArticle 
