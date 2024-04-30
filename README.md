@@ -10,7 +10,7 @@
 - [Installation Instructions](#installation-instructions)
 
 ## Project Description
-Our project aims to simplify the complexities of the stock market for beginners through a web-based simulator that allows risk-free practice of trading strategies using virtual funds. The application provides a realistic trading environment, complete with fluctuating stock values and timely news updates, helping users to engage in buying and selling stocks without the fear of financial loss. Designed to be intuitive and user-friendly, it serves as an educational tool where users can observe stock performance, make informed decisions based on market trends, and learn the intricacies of stock trading. While it offers a safe learning platform, it also highlights the difference between virtual trading and the real-world risks of stock market investments, preparing users for actual trading scenarios.
+Our project offers a web-based stock market simulator designed for beginners to practice trading strategies risk-free using virtual funds. It features a realistic trading environment with fluctuating stock values and news updates, enabling users to buy and sell stocks without financial risk. This intuitive and user-friendly platform serves as an educational tool, helping users understand stock market dynamics and make informed decisions. Additionally, it prepares users for real-world trading by highlighting the differences between virtual and actual trading risks.vvv
 
 ## Tech Stack
 - **Frontend Development:** React to build a user interface, styled with Tailwind-CSS.
@@ -27,8 +27,12 @@ Our project aims to simplify the complexities of the stock market for beginners 
 5. **News Feed:** Integrate a news feed featuring the latest stock market news. With sentiment analysis provided by the TextBlob API to gauge market sentiment.
 6. **Open and Closed Trades:** Allow users to view their active (open) and completed (closed) trades, offering insights into their trading performance. Also their lifetime gains and losses.
 
-## Desgin
+## Design
+### Contianer Diagram
+<img width="674" alt="Screenshot 2024-04-29 at 11 02 52 PM" src="https://github.com/jawadrada/SimStock-Exchange/assets/103535961/282b9d99-e55b-4d60-a4a6-06fcc6d884b4">
 
+### Use Case Diagram
+<img width="725" alt="Screenshot 2024-04-29 at 11 38 54 PM" src="https://github.com/jawadrada/SimStock-Exchange/assets/103535961/e92600c8-c667-46f8-ba39-1257d7a54619">
 
 ## Screenshots
 
