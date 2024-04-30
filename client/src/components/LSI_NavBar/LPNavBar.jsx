@@ -15,9 +15,11 @@ function LPNavBar() {
       <div className="flex items-center">
         <div className="flex space-x-8 mr-4"> 
           <Link to={'/'} className='rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>Home</Link>
+          <SignedIn>
           <Link to={'/trade'} className='rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>Trading</Link>
           <Link to={'/pastTrade'} className='rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>Past Trades</Link>
           <Link to={'/news'} className='rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>News</Link>
+          </SignedIn>
         </div>
         <SignedOut>
           <button 
