@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { IoIosClose } from "react-icons/io";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 function Search() {
   //symbol look up
@@ -27,6 +28,11 @@ function Search() {
       </button>
       )}
 
+      {!input && (
+        <button>
+        <FaMagnifyingGlass/>
+        </button>
+      )}
       
     </div>
   );

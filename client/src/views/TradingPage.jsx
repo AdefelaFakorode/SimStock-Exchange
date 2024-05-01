@@ -5,6 +5,7 @@ import Footer from '../components/LSI_NavBar/LSI_Footer.jsx';
 import Search from '../components/Search.jsx';
 import Details from '../components/Details';
 import Overview from '../components/Overview';
+import StockChart from '../components/StockChart';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -42,7 +43,7 @@ function TradingPage() {
           </div>
         </div>
         <div className="md:col-span-2 row-span-4 bg-neutral-400">
-          <div>Chart</div>
+          <div><StockChart /></div>
         </div>
         {companyDetails ? (
           <div className='bg-neutral-400'>
