@@ -4,17 +4,17 @@ import Card from "./Card";
 const Details = ({ details }) => {
 
   const detailsList = {
-    name: "Name",
+    longName: "Name",
     country: "Country",
     currency: "Currency",
     exchange: "Exchange",
     ipo: "IPO Date",
-    marketCapitalization: "Market Capitalization",
-    finnhubIndustry: "Industry",
+    marketCap: "Market Capitalization",
+    industry: "Industry",
   };
 
   const convertMillionToBillion = (number) => {
-    return (number / 1000).toFixed(2);
+    return (number / 1000000000).toFixed(2);
   };
 
   return (
@@ -29,7 +29,7 @@ const Details = ({ details }) => {
             <li key={item} className="flex-1 flex justify-between items-center">
               <span>{detailsList[item]}</span>
               <span className="font-bold">
-                {item === "marketCapitalization"
+                {item === "marketCap"
                   ? `${convertMillionToBillion(details[item])}B`
                   : details[item]}
               </span>
