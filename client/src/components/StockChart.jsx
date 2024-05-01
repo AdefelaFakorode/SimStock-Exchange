@@ -20,8 +20,7 @@ function StockChart({ ticker }) {
 
   return (
     <div>
-      <h2>Stock Chart for {ticker}</h2>
-      <LineChart width={1000} height={600} data={data}
+      <LineChart width={1060} height={680} data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="Date" />
