@@ -16,7 +16,7 @@ function StockChart({ticker}) {
     }
 
     fetchData();
-  }, []);
+  }, [ticker]);
 
   return (
     <div>

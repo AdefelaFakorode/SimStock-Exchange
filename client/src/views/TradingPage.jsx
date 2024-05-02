@@ -13,7 +13,7 @@ import axios from 'axios';
 
 function TradingPage() {
   const [companyDetails, setCompanyDetails] = useState(null);
-  const [ticker, setTicker] = useState('msft');
+  const [ticker, setTicker] = useState('AAPL');
   useEffect(() => {
     const fetchCompanyDetails = async () => {
         try {
@@ -30,7 +30,7 @@ function TradingPage() {
     };
 
     fetchCompanyDetails();
-}, []);
+}, [ticker]);
 
 
     return (<div>
@@ -39,7 +39,7 @@ function TradingPage() {
         <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 bg-neutral-400 my-auto">
           <h1 className='text-5xl ml-[100px]'>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
           <div className='my-4 ml-[100px]'>
-            <Search />
+            <Search setTicker={setTicker}/>
           </div>
         </div>
         <div className="md:col-span-2 row-span-4 bg-neutral-400">
