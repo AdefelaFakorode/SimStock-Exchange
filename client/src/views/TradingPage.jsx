@@ -13,11 +13,11 @@ import axios from 'axios';
 
 function TradingPage() {
   const [companyDetails, setCompanyDetails] = useState(null);
-
+  const [ticker, setTicker] = useState('msft');
   useEffect(() => {
     const fetchCompanyDetails = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:5000/company/msft');
+            const response = await axios.get(`http://127.0.0.1:5000/company/${ticker}`);
             const data = response.data;
             if (data.currentPrice && data.previousClose) {
                 data.change = (data.currentPrice - data.previousClose).toFixed(2);
@@ -43,7 +43,9 @@ function TradingPage() {
           </div>
         </div>
         <div className="md:col-span-2 row-span-4 bg-neutral-400">
-          <div><StockChart /></div>
+          <div>
+          <StockChart ticker={ticker} />
+            </div>
         </div>
         {companyDetails ? (
           <div className='bg-neutral-400'>
