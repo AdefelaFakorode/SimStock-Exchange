@@ -1,7 +1,11 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
+from flask_cors import cross_origin
 from routes import fetch_company_details, fetch_historical_data, fetch_latest_quote
 import logging
+import requests
+
+
 
 app = Flask(__name__)
 
@@ -23,6 +27,14 @@ def company_details(ticker):
         logging.error(f"Failed to fetch company details for {ticker}: {str(e)}")
         return jsonify({'error': 'Failed to fetch company details', 'details': str(e)}), 500
 
+@app.route('/search', methods=['GET'])
+def proxy_search():
+    query = request.args.get('q')
+    if not query:
+        return jsonify({'error': 'Query parameter is missing'}), 400
+    response = requests.get(f'https://query1.finance.yahoo.com/v1/finance/search?q={query}')
+    return jsonify(response.json())
+
 @app.route('/history/<ticker>')
 def history(ticker):
     try:
@@ -39,5 +51,7 @@ def quote(ticker):
         logging.error(f"Failed to fetch the latest quote for {ticker}: {str(e)}")
         return jsonify({'error': 'Failed to fetch the latest quote', 'details': str(e)}), 500
 
+
+    
 if __name__ == "__main__":
     app.run(debug=True)
