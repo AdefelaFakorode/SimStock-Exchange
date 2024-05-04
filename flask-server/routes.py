@@ -13,31 +13,18 @@ def fetch_company_details(ticker):
     return jsonify(info)
 
 
-def fetch_historical_data(ticker):
-
-    period = request.args.get("period", "1y")
-
-    interval = request.args.get("interval", "1d")
-
-    ticker = yf.Ticker(ticker)
-
+def fetch_historical_data(ticker, period="1y", interval="1d"):
+    ticker_obj = yf.Ticker(ticker)
     try:
-
-        data = ticker.history(period=period, interval=interval)
-
+        data = ticker_obj.history(period=period, interval=interval)
         if data.empty:
-
             return jsonify({"error": "No historical data found."}), 404
-
         data.reset_index(inplace=True)
-
         data["Date"] = data["Date"].dt.strftime("%Y-%m-%d")
         data_dict = data.to_dict(orient="records")
-
         return jsonify(data_dict), 200
-
     except Exception as e:
-
+        print(f"Error fetching data for {ticker} with interval {interval} and period {period}: {e}")
         return jsonify({"error": str(e)}), 500
 
 

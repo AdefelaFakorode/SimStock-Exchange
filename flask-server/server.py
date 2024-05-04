@@ -37,11 +37,15 @@ def proxy_search():
 
 @app.route('/history/<ticker>')
 def history(ticker):
+    # Retrieve period and interval from query parameters with default values
+    period = request.args.get('period', '1y')
+    interval = request.args.get('interval', '1d')
     try:
-        return fetch_historical_data(ticker)
+        return fetch_historical_data(ticker, period, interval)
     except Exception as e:
-        logging.error(f"Failed to fetch historical data for {ticker}: {str(e)}")
+        print(f"Failed to fetch historical data for {ticker}: {str(e)}")
         return jsonify({'error': 'Failed to fetch historical data', 'details': str(e)}), 500
+
 
 @app.route('/quote/<ticker>')
 def quote(ticker):
