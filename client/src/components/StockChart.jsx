@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import axios from 'axios';
 
 function StockChart({ticker}) {
@@ -19,8 +19,8 @@ function StockChart({ticker}) {
   }, [ticker]);
 
   return (
-    <div>
-      <LineChart width={1060} height={690} data={data}
+    <div style={{ overflow: 'auto' }}>
+      <LineChart width={920} height={620} data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="Date" />
