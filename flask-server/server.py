@@ -13,12 +13,14 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
 
 # Enable CORS for all domains and all routes
 CORS(app)
 
 logging.basicConfig(level=logging.DEBUG)
+
+from models import db, User, Transaction, UserStocks, NewsFeed
+db.init_app(app)
 
 from routes import fetch_company_details, fetch_historical_data, fetch_latest_quote
 
@@ -63,5 +65,5 @@ def quote(ticker):
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # This creates all tables based on the SQLAlchemy models
+        db.create_all()
     app.run(debug=True)

@@ -3,9 +3,9 @@ from sqlalchemy.dialects.postgresql import ENUM
 
 db = SQLAlchemy()
 
-sentiment_type = ENUM('positive', 'negative', 'neutral', name='sentiment_type', create_type=False)
-status_type = ENUM('open', 'closed', name='status_type', create_type=False)
-transaction_type = ENUM('buy', 'sell', name='transaction_type', create_type=False)
+sentiment_type = ENUM('positive', 'negative', 'neutral', name='sentiment_type', create_type=True)
+status_type = ENUM('open', 'closed', name='status_type', create_type=True)
+transaction_type = ENUM('buy', 'sell', name='transaction_type', create_type=True)
 
 class User(db.Model):
     user_id = db.Column(db.String, primary_key=True)
@@ -30,14 +30,15 @@ class UserStocks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String, db.ForeignKey('user.user_id'), nullable=False)
     stock_ticker = db.Column(db.String, nullable=False)
-    last_accessed_price = db.Column(db.Numeric(10, 2))
-    last_accessed_timestamp = db.Column(db.DateTime, server_default=db.func.now())
+    last_accessed_price = db.Column(db.Numeric(10, 2), nullable=True)
+    last_accessed_timestamp = db.Column(db.DateTime, nullable=True)
+
 
 class NewsFeed(db.Model):
     news_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     content = db.Column(db.Text, nullable=False)
     sentiment = db.Column(sentiment_type, nullable=False)
-    stock_ticker = db.Column(db.String, db.ForeignKey('user_stocks.stock_ticker'), nullable=False)
+    stock_ticker = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
