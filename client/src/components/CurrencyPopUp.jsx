@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-function CurrencyPopUp({ onClose, currency, setCurrency }) {
+function CurrencyPopUp({ onClose, balance, setBalance }) {
     useEffect(() => {
         const handleKeyPress = (e) => {
             if (e.key === 'Enter') {
@@ -25,10 +25,10 @@ function CurrencyPopUp({ onClose, currency, setCurrency }) {
         let amount = parseFloat(document.getElementById('Curr-PopUp').value);
 
         if (isNaN(amount)) {
-            amount = 0.0;
+            amount = 0.00;
         }
         
-        setCurrency((parseFloat(currency) + amount).toFixed(2));
+        setBalance((parseFloat(balance) + amount).toFixed(2));
         onClose();
     }
     
@@ -42,7 +42,7 @@ function CurrencyPopUp({ onClose, currency, setCurrency }) {
                 </div>
     
                 <div className="">
-                    <label htmlFor="Curr-PopUp" className="font-semibold">Currency (USD $) </label>
+                    <label htmlFor="Curr-PopUp" className="font-semibold">Total Balance (USD $) </label>
                     <input id="Curr-PopUp" type="text" className="border border-gray-700 p-2 rounded mb-5" placeholder="$50.00"/>
                     
                 </div>
