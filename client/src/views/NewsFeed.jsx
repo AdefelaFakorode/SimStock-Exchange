@@ -9,6 +9,7 @@ const refreshRate = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 function NewsFeed() {
     const [newsArticles, setNewsArticles] = useState([]);
     const [numArticles, setNumArticles] = useState(5);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
       const fetchArticles = async () => {
@@ -26,7 +27,7 @@ function NewsFeed() {
                   (MSFT AND stock) OR 
                   (NFLX AND stock) OR 
                   (TSLA AND stock)&` +
-                  // `from=${dateString}&` +
+                  `from=${dateString}&` +
                   `sortBy=popularity&` +
                   `apiKey=3f52d2fffebe4de4ab5a29d0c3d8af42`;
 
@@ -41,9 +42,11 @@ function NewsFeed() {
             article.title &&
             article.url
           );
+          setIsLoading(false);
           setNewsArticles(filteredArticles);
           console.log("Data was loaded successfully:", filteredArticles);
         } catch (error) {
+          setIsLoading(false);
           console.log("Error, data was not loaded successfully:", error);
         }
       };
@@ -52,6 +55,10 @@ function NewsFeed() {
       const interval = setInterval(fetchArticles, refreshRate);
       return () => clearInterval(interval);
   }, []);
+
+    if (isLoading) {
+      return <div className="text-center text-8xl text-bold ">Loading articles...</div>;
+    }
 
     if (newsArticles.length === 0) {
         return <div>No articles found</div>;
