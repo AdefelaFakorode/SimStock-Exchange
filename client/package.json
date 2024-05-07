@@ -15,11 +15,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.6.8",
-<<<<<<< HEAD
     "lodash.debounce": "^4.0.8",
-=======
     "cors": "^2.8.5",
->>>>>>> f0bab6dc2aa97f7b5f1544da7eb9130f7a23b005
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.1.0",
