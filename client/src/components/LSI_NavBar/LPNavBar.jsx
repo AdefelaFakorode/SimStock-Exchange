@@ -13,20 +13,21 @@ function LPNavBar() {
             <UserButton />
           </SignedIn>
         </div>
-
         <div className="flex space-x-3">
           <SignedIn>
+            <div className='flex space-x-3 lg:mr-[100px]'>
             <Link to={'/'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>Home</Link>
             <Link to={'/trade'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>Trading</Link>
             <Link to={'/pastTrade'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>Past Trades</Link>
             <Link to={'/news'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform hover:-translate-y-1'>News</Link>
+            </div>
           </SignedIn>
           <SignedOut>
             <button onClick={() => openSignIn()} className="text-[#F7F7F7] hover:text-[#BDBDBD] font-bold rounded transition duration-300 ease-in-out">
               Sign In
             </button>
             <button onClick={() => openSignUp()}>
-              <a href="#_" className="relative inline-flex items-center justify-center p-4 font-bold lg:px-8 lg:py-2 overflow-hidden text-indigo-600 transition duration-300 ease-out] rounded shadow-md group">
+              <a href="#_" className="lg:mr-[100px] relative inline-flex items-center justify-center p-4 font-bold lg:px-8 lg:py-2 overflow-hidden text-indigo-600 transition duration-300 ease-out] rounded shadow-md group">
                 <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full group-hover:translate-x-0 ease">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
