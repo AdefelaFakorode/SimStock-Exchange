@@ -22,11 +22,19 @@ logging.basicConfig(level=logging.DEBUG)
 from models import db, User, Transaction, UserStocks, NewsFeed
 db.init_app(app)
 
-from routes import fetch_company_details, fetch_historical_data, fetch_latest_quote
+from routes import fetch_company_details, fetch_historical_data, fetch_latest_quote, fetch_clerk_users
 
 @app.route('/')
 def hello_world():
     return 'Hello, from Flask!'
+
+@app.route('/users')
+def get_users():
+    users_details = fetch_clerk_users()
+    if users_details:
+        return jsonify(users_details)
+    else:
+        return jsonify({"error": "Failed to fetch user details"}), 404
 
 @app.route('/company/<ticker>')
 def company_details(ticker):
