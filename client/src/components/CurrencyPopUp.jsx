@@ -14,6 +14,20 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
             document.removeEventListener('keydown', handleKeyPress);
         };
     }, []);
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (e.key === 'Escape') {
+            onClose();
+          }
+        };
+    
+        document.addEventListener('keydown', handleKeyDown);
+    
+        return () => {
+          document.removeEventListener('keydown', handleKeyDown);
+        };
+      }, []);
+
 
     useEffect(() => {
         const handleKeyDown = (e) => {
