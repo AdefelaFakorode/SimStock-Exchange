@@ -11,6 +11,10 @@ export default {
         'dark-blue': '#243c5a', 
         'light-blue': '#4a8cbb' 
       },
+      animation: {
+        'spin-slow': 'spin-slow 20s linear infinite',
+      },
+
 
       fontFamily: {
         'sans': ['GeneralSans', 'sans-serif'],

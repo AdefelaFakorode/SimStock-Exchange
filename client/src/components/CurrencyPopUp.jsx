@@ -14,6 +14,20 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
             document.removeEventListener('keydown', handleKeyPress);
         };
     }, []);
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (e.key === 'Escape') {
+            onClose();
+          }
+        };
+    
+        document.addEventListener('keydown', handleKeyDown);
+    
+        return () => {
+          document.removeEventListener('keydown', handleKeyDown);
+        };
+      }, []);
+
 
     function handleOnClose(e) {
         if (e.target.id === "container") {
@@ -33,7 +47,7 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
     }
     
     return (
-        <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+        <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-20">
             <div className="bg-white p-4 rounded">
                 <div className="border-b-2 border-black mb-5">
                     <h1 className="font-bold text-center text-xl text-gray-70">
