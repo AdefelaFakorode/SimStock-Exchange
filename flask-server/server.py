@@ -11,9 +11,9 @@ from routes import fetch_company_details, fetch_historical_data, fetch_latest_qu
 load_dotenv('.env.local')
 
 app = Flask(__name__)
-CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 logging.basicConfig(level=logging.DEBUG)
 db.init_app(app)
 
@@ -54,4 +54,4 @@ def quote_view(ticker):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
