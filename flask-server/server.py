@@ -11,30 +11,29 @@ from routes import fetch_company_details, fetch_historical_data, fetch_latest_qu
 load_dotenv('.env.local')
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-CORS(app)
 logging.basicConfig(level=logging.DEBUG)
 db.init_app(app)
 
-@app.route('/')
+@app.route('/api/')
 def hello_world():
     return 'Hello, from Flask!'
 
-@app.route('/users')
+@app.route('/api/users')
 def get_users():
-    """Endpoint to retrieve all users from Clerk."""
     users_details = fetch_clerk_users()
     if users_details:
         return jsonify(users_details)
     else:
         return jsonify({"error": "Failed to fetch user details"}), 404
 
-@app.route('/company/<ticker>')
+@app.route('/api/company/<ticker>')
 def company_details_view(ticker):
     return company_details(ticker)
 
-@app.route('/search', methods=['GET'])
+@app.route('/api/search', methods=['GET'])
 def proxy_search():
     query = request.args.get('q')
     if not query:
@@ -42,13 +41,13 @@ def proxy_search():
     response = requests.get(f'https://query1.finance.yahoo.com/v1/finance/search?q={query}')
     return jsonify(response.json())
 
-@app.route('/history/<ticker>')
+@app.route('/api/history/<ticker>')
 def history_view(ticker):
     period = request.args.get('period', '1y')
     interval = request.args.get('interval', '1d')
     return fetch_historical_data(ticker, period, interval)
 
-@app.route('/quote/<ticker>')
+@app.route('/api/quote/<ticker>')
 def quote_view(ticker):
     return fetch_latest_quote(ticker)
 

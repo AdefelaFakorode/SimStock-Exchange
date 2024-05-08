@@ -7,7 +7,6 @@ CLERK_API_URL = "https://api.clerk.dev/v1"
 CLERK_API_KEY = os.getenv("CLERK_API_KEY")
 
 def fetch_clerk_users():
-    """Fetch all user details from Clerk."""
     headers = {
         "Authorization": f"Bearer {CLERK_API_KEY}",
         "Content-Type": "application/json"
