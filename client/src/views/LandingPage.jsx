@@ -14,7 +14,7 @@ function LandingPage() {
             <img
               src={SM_Logo}
               alt="SimStock Logo"
-              className=" xl:size-[500px] size-[350px] rounded-2xl hovering-spinning-logo"
+              className=" xl:size-[500px] size-[350px] rounded-2xl hovering-spinning-logo "
             />
           </div>
 
