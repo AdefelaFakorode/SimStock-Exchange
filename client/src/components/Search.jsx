@@ -66,7 +66,7 @@ function Search({ setTicker }) {
   };
 
   return (
-    <div className='relative w-96' style={{ zIndex: 1000 }}>
+    <div className='relative w-96 z-10' >
       <div className='flex items-center border-2 rounded-md bg-white border-neutral-200'>
         <input
           type="text"

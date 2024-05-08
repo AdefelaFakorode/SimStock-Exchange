@@ -43,13 +43,12 @@ function TradingPage() {
     const [tradePopUp, setTradePopUp] = useState(false);
 
     return (
-        <div>
+        <div className='min-h-screen flex flex-col'>
             <LPNavBar/>
-            <div className="flex justify-end items-center p-1">
-                <h3 className="mx-2 font-bold">Owned Currency:  { balance }$</h3>
-                <button onClick={() => setCurrPopUp(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-[190px] mx-2">Buy Currency</button>
-            </div>
-
+            <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
+        <h3 className="font-semibold">Owned Currency: ${balance}</h3>
+        <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy Currency</button>
+      </div>
             <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand">
                 <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 bg-neutral-400 my-auto">
                     <h1 className='text-5xl ml-[100px]'>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
@@ -58,7 +57,7 @@ function TradingPage() {
 
                         {/*Trading button*/}
                         <div>
-                            <button onClick={() => setTradePopUp(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Trade</button>
+                            <button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Trade</button>
                         </div>
                     </div>
                 </div>
