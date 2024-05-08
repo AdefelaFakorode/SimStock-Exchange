@@ -40,6 +40,7 @@
 
 .hovering-spinning-logo {
     animation: float 2.5s ease-in-out infinite, spin 40s linear infinite;
+    
 }
 
   

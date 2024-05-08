@@ -7,7 +7,9 @@ export default {
         'text': '#878787',
         'background': '#0C0D0E',
         'buttonColor': '#E0DACD',
-        'hoverButtonColor': '#8F8B83'
+        'hoverButtonColor': '#8F8B83',
+        'dark-blue': '#243c5a', 
+        'light-blue': '#4a8cbb' 
       },
 
       fontFamily: {
