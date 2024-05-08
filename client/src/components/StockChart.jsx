@@ -18,7 +18,7 @@ function StockChart({ ticker }) {
     };
 
     fetchData();
-  }, [ticker, interval, period]);  // Depend on period as well
+  }, [ticker, interval, period, data]);  // Depend on period as well
 
   const handleIntervalChange = (newInterval, newPeriod) => {
     setInterval(newInterval);
