@@ -25,6 +25,20 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
         };
     }, [popupType]);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+            onClose(); 
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
     function handleOnClose(e) {
         if (e.target.id === "container") {
             onClose();
@@ -104,7 +118,7 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
     }
 
     return (
-        <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+        <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-10">
             <div className="bg-white rounded-lg shadow-lg w-1/3">
                 <div className="mb-5 flex">
                     <button onClick={() => setPopupType('buy')} className={`px-5 py-2 border border-gray-200 border-b-4 ${popupType === 'buy' ? 'border-b-green-500 hover:border-b-green-600' : ''} text-black font-bold rounded mb-2 w-1/2`}>
@@ -176,7 +190,7 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
                     <>
                         <h1 className="text-center font-bold text-3xl mb-4">{symbol}</h1>
                         <h4 className="text-center text-lg mb-4">
-                            <strong>Available Shares: </strong>{balance}
+                            <strong>Available Shares: </strong>
                         </h4>
 
                         <div className="flex justify-evenly items-center text-xl mb-5">
