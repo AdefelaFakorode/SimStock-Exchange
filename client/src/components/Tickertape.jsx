@@ -58,7 +58,9 @@ const TickerTape = () => {
     container.appendChild(script);
 
     return () => {
-      container.removeChild(script);
+      if (container.contains(script)) {
+        container.removeChild(script);
+      }
     };
   }, []);
 
