@@ -53,6 +53,14 @@ def fetch_clerk_users():
         return response.json()
     else:
         return None
+    
+def get_user_balance(user_id):
+    user = User.query.get(user_id)
+    if user is not None:
+        return jsonify({'balance': float(user.balance), 'status': 'success'}), 200
+    else:
+        return jsonify({'error': 'User not found'}), 404
+
 
 def fetch_company_details(ticker):
     company = yf.Ticker(ticker)
