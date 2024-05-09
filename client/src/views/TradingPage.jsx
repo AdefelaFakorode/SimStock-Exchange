@@ -43,11 +43,10 @@ function TradingPage() {
     const [tradePopUp, setTradePopUp] = useState(false);
 
     return (
-        <div className='min-h-screen flex flex-col'>
+        <div className='min-h-screen flex flex-col bg-background'>
             <LPNavBar/>
-            <TickerTape />
             <div className="flex justify-between items-center p-4 text-black mx-7">
-                <div className="shadow-xl p-2 border border-gray-400 rounded-lg bg-white">
+                <div className="shadow-xl p-2 border border-gray-400 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800">Total Balance: ${balance}</h3>
                 </div>
 
@@ -55,8 +54,8 @@ function TradingPage() {
                 </div>
 
                 <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand mb-6">
-                    <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 my-auto bg-dark-blue">
-                        <h1 className='text-5xl ml-[100px]'>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
+                    <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 my-auto bg-background">
+                        <h1 className='text-5xl ml-[100px] font-normal text-white '>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
                         <div className='my-4 ml-[100px] flex flex-row justify-between items-center'>
                             <Search setTicker={setTicker}/>
 
@@ -66,13 +65,14 @@ function TradingPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="md:col-span-2 row-span-4 bg-neutral-400">
+                    {/*Stock Chart*/}
+                    <div className="md:col-span-2 row-span-4">
                         <div>
                             <StockChart ticker={ticker} />
                         </div>
                     </div>
                     {companyDetails ? (
-                    <div className='bg-neutral-400'>
+                    <div>
                         <Overview 
                         symbol={companyDetails.symbol} 
                         price={companyDetails.currentPrice}
@@ -82,9 +82,9 @@ function TradingPage() {
                         />
                     </div>
                     ) : (
-                    <div>Loading Overview...</div>
+                    <div className='text-white'>Loading Overview...</div>
                     )}
-                    <div className="row-span-2 xl:row-span-3 bg-neutral-400">
+                    <div className="row-span-2 xl:row-span-3 text-white">
                         {companyDetails ? (
                         <Details details={companyDetails} />
                     ) : (

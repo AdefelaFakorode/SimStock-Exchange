@@ -25,15 +25,19 @@ function StockChart({ ticker }) {
     setPeriod(newPeriod);  // Set period when interval changes
   };
 
+  const borderColor = "rgba(243, 243, 243, 0.3)";
+
   return (
-    <div className="bg-dark-blue text-black p-4">
-      <div className='flex space-x-2 justify-end mb-4 space-x-5'>
-        <button className={`bg-blue-500 text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 ${interval === '1D' ? 'bg-light-blue' : 'bg-blue-500 hover:bg-blue-600'}`} onClick={() => handleIntervalChange('1D', '1y')}>1D</button>
-        <button className={`bg-blue-500 text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 ${interval === '1wk' ? 'bg-light-blue' : 'bg-blue-500 hover:bg-blue-600'}`} onClick={() => handleIntervalChange('1wk', '1y')}>1W</button>
-        <button className={`bg-blue-500 text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 ${interval === '1mo' ? 'bg-light-blue' : 'bg-blue-500 hover:bg-blue-600'}`} onClick={() => handleIntervalChange('1mo', '1y')}>1M</button>
-        <button className={`bg-blue-500 text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 ${interval === '3mo' ? 'bg-light-blue' : 'bg-blue-500 hover:bg-blue-600'}`} onClick={() => handleIntervalChange('3mo', '3y')}>3M</button>
+    <div className={"bg-background text-white p-4 border-[.1px]"}
+    style={{ borderColor: borderColor }}
+    >
+      <div className='flex  justify-end mb-4 space-x-3'>
+        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1D' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1D', '1y')}>1D</button>
+        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1wk' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1wk', '1y')}>1W</button>
+        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1mo' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1mo', '1y')}>1M</button>
+        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '3mo' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('3mo', '3y')}>3M</button>
       </div>
-      <ResponsiveContainer width="100%" height={520}>
+      <ResponsiveContainer width="100%" height={620}>
         <LineChart data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#2f4858" />
