@@ -29,6 +29,20 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
       }, []);
 
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+            onClose();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+        }, []);
+
     function handleOnClose(e) {
         if (e.target.id === "container") {
             onClose();
@@ -41,9 +55,14 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
         if (isNaN(amount)) {
             amount = 0.00;
         }
-        
-        setBalance((parseFloat(balance) + amount).toFixed(2));
-        onClose();
+
+        if(amount < 0){
+            return
+        }
+        else{
+            setBalance((parseFloat(balance) + amount).toFixed(2));
+            onClose();
+        }
     }
     
     return (
@@ -56,7 +75,7 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
                 </div>
     
                 <div className="">
-                    <label htmlFor="Curr-PopUp" className="font-semibold">Total Balance (USD $) </label>
+                    <label htmlFor="Curr-PopUp" className="font-semibold">Amount (USD $) </label>
                     <input id="Curr-PopUp" type="text" className="border border-gray-700 p-2 rounded mb-5" placeholder="$50.00"/>
                     
                 </div>

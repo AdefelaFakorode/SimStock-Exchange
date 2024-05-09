@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CurrencyPopUp from '../components/CurrencyPopUp';
 import TradePopUp from '../components/TradePopUp';
+import TickerTape from '../components/Tickertape';
 
 function TradingPage() {
   const [companyDetails, setCompanyDetails] = useState(null);
@@ -24,14 +25,13 @@ function TradingPage() {
                 data.changePercent = ((data.change / data.previousClose) * 100).toFixed(2);
             }
             setCompanyDetails(data);
-            console.log(data);
         } catch (error) {
             console.error('Failed to fetch company details:', error);
         }
     };
 
     fetchCompanyDetails();
-}, [ticker]);
+}, [ticker, companyDetails]);
 
     /*
     Make sure the users currency persists. 
@@ -49,6 +49,8 @@ function TradingPage() {
         <h3 className="font-semibold">Owned Currency: ${balance}</h3>
         <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy Currency</button>
       </div>
+      <TickerTape />
+
             <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand">
                 <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 bg-neutral-400 my-auto">
                     <h1 className='text-5xl ml-[100px]'>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>

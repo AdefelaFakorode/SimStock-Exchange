@@ -192,7 +192,7 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
                     <>
                         <h1 className="text-center font-bold text-3xl mb-4">{symbol}</h1>
                         <h4 className="text-center text-lg mb-4">
-                            <strong>Available Shares: </strong>{balance}
+                            <strong>Available Shares: </strong>
                         </h4>
 
                         <div className="flex justify-evenly items-center text-xl mb-5">
