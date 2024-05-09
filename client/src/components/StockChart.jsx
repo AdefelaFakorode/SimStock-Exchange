@@ -32,8 +32,8 @@ function StockChart({ ticker }) {
     style={{ borderColor: borderColor }}
     >
       <div className='flex  justify-end mb-4 space-x-3 text-white'>
-        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1D' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1D', '1y')}>1D</button>
-        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1wk' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1wk', '1y')}>1W</button>
+        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1D' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1D', '1mo')}>1D</button>
+        <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1wk' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1wk', '6mo')}>1W</button>
         <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1mo' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1mo', '1y')}>1M</button>
         <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '3mo' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('3mo', '3y')}>3M</button>
       </div>
