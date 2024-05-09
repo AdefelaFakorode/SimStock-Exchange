@@ -29,12 +29,22 @@ Our project offers a web-based stock market simulator designed for beginners to 
 
 ## Design
 ### Contianer Diagram
-
+<img width="733" alt="Screenshot 2024-05-09 at 12 59 34 AM" src="https://github.com/jawadrada/SimStock-Exchange/assets/103535961/53240b61-972d-4734-9fce-86b038896f43">
 
 ### Use Case Diagram
-
+<img width="741" alt="Screenshot 2024-05-09 at 1 04 43 AM" src="https://github.com/jawadrada/SimStock-Exchange/assets/103535961/ff8873da-2f35-4353-81a0-c3fae3b6f183">
 
 ## Screenshots
+### Landing Page
+<img width="1440" alt="Screenshot 2024-05-09 at 1 34 55 AM" src="https://github.com/jawadrada/SimStock-Exchange/assets/103535961/9789d981-8b78-4e48-b0f6-673f6777355a">
+
+### Trading Page
+
+
+### News Feed
+<img width="1440" alt="Screenshot 2024-05-09 at 1 34 46 AM" src="https://github.com/jawadrada/SimStock-Exchange/assets/103535961/744270a2-69a1-473b-86d6-1e69f6b441e6">
+
+### Past Trades
 
 ## Development Setup
 
