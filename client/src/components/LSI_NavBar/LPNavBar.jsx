@@ -23,7 +23,7 @@ function LPNavBar() {
             </div>
           </SignedIn>
           <SignedOut>
-            <button onClick={() => openSignIn()} className="text-[#F7F7F7] hover:text-[#BDBDBD] font-bold rounded transition duration-300 ease-in-out">
+            <button onClick={() => openSignIn()} className="lg:mr-3 text-[#F7F7F7] hover:text-[#BDBDBD] font-bold rounded transition duration-300 ease-in-out">
               Sign In
             </button>
             <button onClick={() => openSignUp()}>
