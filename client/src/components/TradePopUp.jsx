@@ -83,7 +83,7 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
             setInsufFunds(true);
             return;
         } else {
-            setBalance(balance - amount);
+            setBalance((parseFloat(balance) - amount).toFixed(2));
         }
 
         onClose();

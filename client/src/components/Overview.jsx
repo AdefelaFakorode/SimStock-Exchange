@@ -3,26 +3,26 @@ import Card from "./Card";
 
 const Overview = ({ symbol, price, change, changePercent, currency }) => {
   return (
-    <Card>
-      <span className="absolute left-4 top-4 text-neutral-400 text-lg xl:text-xl 2xl:text-2xl">
-        {symbol}
+  <Card className="relative bg-white shadow-lg rounded-lg overflow-hidden p-4">
+    <span className="absolute left-4 top-1 text-neutral-400 text-xl xl:text-2xl 2xl:text-3xl font-semibold">
+      {symbol}
+    </span>
+    <div className="flex items-center justify-between text-gray-800">
+      <span className="text-3xl xl:text-5xl 2xl:text-6xl font-medium flex items-center">
+        ${price}
+        <span className="text-xl xl:text-2xl 2xl:text-3xl text-neutral-500 ml-4 font-normal">
+          {currency}
+        </span>
       </span>
-      <div className="w-full h-full flex items-center justify-around">
-        <span className="text-2xl xl:text-4xl 2xl:text-5xl flex items-center">
-          ${price}
-          <span className="text-lg xl:text-xl 2xl:text-2xl text-neutral-400 m-2">
-            {currency}
-          </span>
-        </span>
-        <span
-          className={`text-lg xl:text-xl 2xl:text-2xl ${
-            change > 0 ? "text-lime-500" : "text-red-500"
-          }`}
-        >
-          {change} <span>({changePercent}%)</span>
-        </span>
-      </div>
-    </Card>
+      <span
+        className={`text-xl xl:text-2xl 2xl:text-3xl ${
+          change > 0 ? "text-green-500" : "text-red-500"
+        }`}
+      >
+        {change} <span>({changePercent}%)</span>
+      </span>
+    </div>
+  </Card>
   );
 };
 
