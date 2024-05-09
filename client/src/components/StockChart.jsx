@@ -30,7 +30,7 @@ function StockChart({ ticker }) {
     <div className={"bg-background text-black p-4 border-[.1px]"}
     style={{ borderColor: borderColor }}
     >
-      <div className='flex  justify-end mb-4 space-x-3'>
+      <div className='flex  justify-end mb-4 space-x-3 text-white'>
         <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1D' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1D', '1mo')}>1D</button>
         <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1wk' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1wk', '3mo')}>1W</button>
         <button className={`bg-background text-sm font-medium py-1 px-3 rounded-lg transition-colors duration-200 border-2 ${interval === '1mo' ? 'bg-buttonColor text-black' : 'bg-background hover:bg-hoverButtonColor'}`} onClick={() => handleIntervalChange('1mo', '1y')}>1M</button>
