@@ -23,7 +23,17 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/news" element={<NewsFeed />} />
+          <Route path="/news" element={
+        <>
+        <SignedIn>
+        <NewsFeed />
+        </SignedIn>
+        <SignedOut>
+          <RedirectToSignIn />
+        </SignedOut>
+      </>
+        
+        } />
           <Route
             path="/trade"
             element={
