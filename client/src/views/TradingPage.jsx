@@ -18,7 +18,7 @@ function TradingPage() {
   useEffect(() => {
     const fetchCompanyDetails = async () => {
         try {
-            const response = await axios.get(`/api/company/${ticker}`);
+            const response = await axios.get(`http://127.0.0.1:5000/company/${ticker}`);
             const data = response.data;
             if (data.currentPrice && data.previousClose) {
                 data.change = (data.currentPrice - data.previousClose).toFixed(2);
