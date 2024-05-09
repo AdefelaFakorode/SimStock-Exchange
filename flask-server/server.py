@@ -21,11 +21,16 @@ logging.basicConfig(level=logging.DEBUG)
 from models import db, User, Transaction, UserStocks, NewsFeed
 db.init_app(app)
 
-from routes import fetch_company_details, fetch_historical_data, fetch_latest_quote, fetch_clerk_users
+from routes import fetch_company_details, fetch_historical_data, fetch_latest_quote, fetch_clerk_users, clerk_webhook
 
 @app.route('/')
 def hello_world():
     return 'Hello, from Flask!'
+
+@app.route('/webhooks/clerk/', methods=['POST'])
+def handle_clerk_webhook():
+    return clerk_webhook()
+
 
 @app.route('/users')
 def get_users():
@@ -72,4 +77,4 @@ def quote(ticker):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(port=5000,debug=True)
