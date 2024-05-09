@@ -19,7 +19,9 @@ function LPNavBar() {
             <Link to={'/'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform'>Home</Link>
             <Link to={'/trade'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform'>Trading</Link>
             <Link to={'/news'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform'>News</Link>
-            <div className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black cursor-not-allowed font-medium py-2 px-4 transition duration-300 ease-in-out transform'>Past Trades</div>
+            <Link to={'/pastTrade'} className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform'>Past Trades</Link>
+
+            {/* <div className='rounded bg-buttonColor hover:bg-hoverButtonColor text-black cursor-not-allowed font-medium py-2 px-4 transition duration-300 ease-in-out transform'>Past Trades</div> */}
             </div>
           </SignedIn>
           <SignedOut>
