@@ -45,17 +45,16 @@ function TradingPage() {
     return (
         <div className='min-h-screen flex flex-col bg-background'>
             <LPNavBar/>
-            <div className="flex p-4 text-black">
-                    <h3 className="text-lg font-semibold text-white">Total Balance: ${balance}</h3>
-<div className='flex justify-end items-end'>
-    
-<button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Deposit</button>
-<button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Trade</button>
-
-</div>
+            <TickerTape/>
+            <div className="flex justify-between items-center p-4 text-black">
+                <h3 className="text-lg font-semibold text-white">Total Balance: ${balance}</h3>
+                <div className='flex justify-end items-end'>
+                    <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2">Deposit</button>
+                    <button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded mx-2">Trade</button>
                 </div>
+            </div>
 
-                <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand mb-6">
+                <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand xl:mb-28">
                     <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 my-auto bg-background">
                         <h1 className='text-5xl ml-[100px] font-normal text-white '>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
                         <div className='my-4 ml-[100px] flex flex-row justify-between items-center'>
