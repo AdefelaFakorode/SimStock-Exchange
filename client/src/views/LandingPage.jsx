@@ -2,6 +2,7 @@ import SM_Logo from "../assets/SM_Logo.png";
 import LPNavBar from "../components/LSI_NavBar/LPNavBar";
 import Footer from "../components/LSI_NavBar/LSI_Footer.jsx";
 import { Link } from "react-router-dom";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 function LandingPage() {
   return (
@@ -17,11 +18,10 @@ function LandingPage() {
               className=" xl:size-[500px] size-[350px] rounded-2xl hovering-spinning-logo "
             />
           </div>
-
           {/* Text and Button */}
           <div className="flex-1 flex flex-col items-center lg:items-center lg:mb-[120px]">
             {/* Title */}
-            <h1 className="font-sans font-semibold text-white text-6xl xl:text-[62px] text-center lg:text-center">
+            <h1 className="font-semibold text-white text-6xl xl:text-[62px] text-center lg:text-center">
               SIMSTOCK EXCHANGE
             </h1>
             {/* Text */}
@@ -48,13 +48,20 @@ function LandingPage() {
                     ></path>
                   </svg>
                 </span>
-                <span className="absolute flex items-center justify-center w-full h-full bg-buttonColor hover:bg-black  text-black transition-all duration-300 transform group-hover:translate-x-full ease">
-                  Open an account
-                </span>
+                <SignedOut>
+                  <span className="absolute flex items-center justify-center w-full h-full bg-buttonColor hover:bg-black  text-black transition-all duration-300 transform group-hover:translate-x-full ease">
+                    Open an account
+                  </span>
+                </SignedOut>
+                <SignedIn>
+                  <span className="absolute flex items-center justify-center w-full h-full bg-buttonColor hover:bg-black  text-black transition-all duration-300 transform group-hover:translate-x-full ease">
+                    Trade Now
+                  </span>
+                </SignedIn>
                 <span className="relative invisible">Open an account</span>
               </button>
             </Link>
-                  {/*
+            {/*
 
             <Link to={'/trade'}>
   <button className="font-sans font-medium text-black mt-4 xl:text-2xl py-3 px-16 xl:py-4 xl:px-20 rounded-[20px] shadow-md overflow-hidden transition duration-300 ease-out relative inline-flex items-center justify-center group">

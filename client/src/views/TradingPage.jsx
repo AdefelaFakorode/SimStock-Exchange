@@ -67,8 +67,8 @@ function TradingPage() {
             <div className="flex justify-between items-center p-4 text-black">
                 <h3 className="text-lg font-semibold text-white">Total Balance: ${balance}</h3>
                 <div className='flex justify-end items-end'>
-                    <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2">Deposit</button>
-                    <button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded mx-2">Trade</button>
+                    <button onClick={() => setCurrPopUp(true)} className="rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform">Deposit</button>
+                    <button onClick={() => setTradePopUp(true)} className="rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform mx-2">Buy/Sell Stock</button>
                 </div>
             </div>
 
@@ -95,14 +95,18 @@ function TradingPage() {
                         currency={companyDetails.currency}
                         />
                     </div>
+                    
                     ) : (
                     <div className='text-white'>Loading Overview...</div>
                     )}
                     <div className="row-span-2 xl:row-span-3 text-white">
                         {companyDetails ? (
                         <Details details={companyDetails} />
+                        
                     ) : (
                         <p>Loading details...</p>
+                        
+                        
                     )}
                     </div>
 
