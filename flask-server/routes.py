@@ -1,10 +1,47 @@
-import yfinance as yf
+from flask import request, jsonify
+from models import User, db
+import hashlib
+import hmac
 import os
+import yfinance as yf
 import requests
-from flask import jsonify
 
 CLERK_API_URL = "https://api.clerk.dev/v1"
 CLERK_API_KEY = os.getenv("CLERK_API_KEY")
+
+def clerk_webhook():
+    payload = request.get_json()
+    event_type = payload['type']
+
+    if event_type == 'user.created' or event_type == 'user.updated':
+        user_data = payload['data']
+        user_id = user_data['id']
+        name = user_data['first_name'] + ' ' + user_data['last_name']
+        email = user_data['email_addresses'][0]['email_address']
+        
+        user = User.query.get(user_id)
+        if user:
+            # Update existing user
+            user.name = name
+            user.email = email
+        else:
+            # Create new user
+            user = User(user_id=user_id, name=name, email=email)
+            db.session.add(user)
+
+        db.session.commit()
+
+    elif event_type == 'user.deleted':
+        user_id = payload['data']['id']
+        
+        # Delete user from the database
+        user = User.query.get(user_id)
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+
+    return jsonify({'status': 'success'}), 200
+
 
 def fetch_clerk_users():
     headers = {
