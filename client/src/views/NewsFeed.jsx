@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import NewsArticle from "../components/NewsArticle.jsx";
 import LPNavBar from '../components/LSI_NavBar/LPNavBar';
 import Footer from '../components/LSI_NavBar/LSI_Footer.jsx';
@@ -58,15 +58,13 @@ function NewsFeed() {
     }
 
     return (
-        <>
-          <main className={`bg-background p-4 transition-opacity duration-500 ${isLoading ? 'opacity-50 blur-sm' : 'opacity-100'}`}>
-            <LPNavBar />
-
+        <div>
+                      <LPNavBar />
+          <div className="bg-background min-h-screen">
             <div className="container mx-auto">
                 <div className="text-center">
-                    <h1 className="text-white text-3xl font-bold p-2 m-2">News Feed</h1>
+                    <h1 className="font-semibold text-white text-6xl py-10 ">News Feed</h1>
                 </div>
-
                 {newsArticles.slice(0, numArticles).map(article => (
                       <NewsArticle 
                         key={article.url}
@@ -81,14 +79,15 @@ function NewsFeed() {
                 ))}
 
                 <div className="flex justify-center p-11">
-                  <button className="bg-white text-lg font-semibold text-gray-800 py-1 px-2 border border-gray-400 rounded shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-300 ease-in-out" onClick={handleClick}>
-                    Load More Articles
-                  </button>
+                  <button className="rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform mx-2 " onClick={handleClick}>
+                  Load More Articles
+                    </button>
+
                 </div>
             </div>
-          </main>
-          <Footer />
-        </>
+            <Footer />
+          </div>
+        </div>
     );
 }
 
