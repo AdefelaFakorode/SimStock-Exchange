@@ -47,9 +47,8 @@ function TradingPage() {
             <LPNavBar/>
             <div className="flex justify-between items-center p-4 text-black mx-7">
                 <div className="shadow-xl p-2 border border-gray-400 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-800">Total Balance: ${balance}</h3>
+                    <h3 className="text-lg font-semibold text-gray-400">Total Balance: ${balance}</h3>
                 </div>
-
                     <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy Currency</button>
                 </div>
 
@@ -75,7 +74,7 @@ function TradingPage() {
                     <div>
                         <Overview 
                         symbol={companyDetails.symbol} 
-                        price={companyDetails.currentPrice}
+                        price={companyDetails.currentPrice.toFixed(2)}
                         change={companyDetails.change}
                         changePercent={companyDetails.changePercent}
                         currency={companyDetails.currency}
