@@ -72,7 +72,7 @@ function TradingPage() {
                     <div>
                         <Overview 
                         symbol={companyDetails.symbol} 
-                        price={companyDetails.currentPrice}
+                        price={companyDetails.currentPrice.toFixed(2)}
                         change={companyDetails.change}
                         changePercent={companyDetails.changePercent}
                         currency={companyDetails.currency}

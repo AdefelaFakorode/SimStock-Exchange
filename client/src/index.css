@@ -4,10 +4,10 @@
 
 {/*dont delete, I use to see the margins - adefela*/}
 
-*{
+/* *{
   border: 1px solid red
 }
-
+ */
 
 @font-face {
     font-family: 'GeneralSans';
