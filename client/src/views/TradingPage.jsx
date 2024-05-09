@@ -45,58 +45,61 @@ function TradingPage() {
     return (
         <div className='min-h-screen flex flex-col'>
             <LPNavBar/>
-            <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
-        <h3 className="font-semibold">Owned Currency: ${balance}</h3>
-        <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy Currency</button>
-      </div>
-      <TickerTape />
+            <TickerTape />
+            <div className="flex justify-between items-center p-4 text-black mx-7">
+                <div className="shadow-xl p-2 border border-gray-400 rounded-lg bg-white">
+                    <h3 className="text-lg font-semibold text-gray-800">Total Balance: ${balance}</h3>
+                </div>
 
-            <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand">
-                <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 bg-neutral-400 my-auto">
-                    <h1 className='text-5xl ml-[100px]'>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
-                    <div className='my-4 ml-[100px] flex flex-row justify-between items-center'>
-                        <Search setTicker={setTicker}/>
+                    <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy Currency</button>
+                </div>
 
-                        {/*Trading button*/}
-                        <div>
-                            <button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Trade</button>
+                <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand mb-6">
+                    <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 my-auto bg-dark-blue">
+                        <h1 className='text-5xl ml-[100px]'>{companyDetails ? companyDetails.longName : 'Loading...'}</h1>
+                        <div className='my-4 ml-[100px] flex flex-row justify-between items-center'>
+                            <Search setTicker={setTicker}/>
+
+                            {/*Trading button*/}
+                            <div>
+                                <button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Trade</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="md:col-span-2 row-span-4 bg-neutral-400">
-                    <div>
-                        <StockChart ticker={ticker} />
+                    <div className="md:col-span-2 row-span-4 bg-neutral-400">
+                        <div>
+                            <StockChart ticker={ticker} />
+                        </div>
                     </div>
-                </div>
-                {companyDetails ? (
-                <div className='bg-neutral-400'>
-                    <Overview 
-                    symbol={companyDetails.symbol} 
-                    price={companyDetails.currentPrice}
-                    change={companyDetails.change}
-                    changePercent={companyDetails.changePercent}
-                    currency={companyDetails.currency}
-                    />
-                </div>
-                ) : (
-                <div>Loading Overview...</div>
-                )}
-                <div className="row-span-2 xl:row-span-3 bg-neutral-400">
                     {companyDetails ? (
-                    <Details details={companyDetails} />
-                ) : (
-                    <p>Loading details...</p>
-                )}
-                </div>
+                    <div className='bg-neutral-400'>
+                        <Overview 
+                        symbol={companyDetails.symbol} 
+                        price={companyDetails.currentPrice}
+                        change={companyDetails.change}
+                        changePercent={companyDetails.changePercent}
+                        currency={companyDetails.currency}
+                        />
+                    </div>
+                    ) : (
+                    <div>Loading Overview...</div>
+                    )}
+                    <div className="row-span-2 xl:row-span-3 bg-neutral-400">
+                        {companyDetails ? (
+                        <Details details={companyDetails} />
+                    ) : (
+                        <p>Loading details...</p>
+                    )}
+                    </div>
 
 
-                {tradePopUp && (
-                    <TradePopUp onClose={() => setTradePopUp(false)} balance={balance} setBalance={setBalance} changePercent={companyDetails.changePercent} symbol={companyDetails.symbol} price={companyDetails.currentPrice} currency={companyDetails.currency} change={companyDetails.change}  />
-                )}
+                    {tradePopUp && (
+                        <TradePopUp onClose={() => setTradePopUp(false)} balance={balance} setBalance={setBalance} changePercent={companyDetails.changePercent} symbol={companyDetails.symbol} price={companyDetails.currentPrice} currency={companyDetails.currency} change={companyDetails.change}  />
+                    )}
 
-                {currPopUp && (
-                    <CurrencyPopUp onClose={() => setCurrPopUp(false)} balance={balance} setBalance={setBalance} />
-                )}
+                    {currPopUp && (
+                        <CurrencyPopUp onClose={() => setCurrPopUp(false)} balance={balance} setBalance={setBalance} />
+                    )}
             </div>
             <Footer />
         </div>
