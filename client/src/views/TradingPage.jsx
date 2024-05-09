@@ -11,10 +11,32 @@ import axios from 'axios';
 import CurrencyPopUp from '../components/CurrencyPopUp';
 import TradePopUp from '../components/TradePopUp';
 import TickerTape from '../components/Tickertape';
+import { useUser } from '@clerk/clerk-react';
 
 function TradingPage() {
   const [companyDetails, setCompanyDetails] = useState(null);
   const [ticker, setTicker] = useState('AAPL');
+  const [balance, setBalance] = useState(0.00);
+  const [currPopUp, setCurrPopUp] = useState(false);
+  const [tradePopUp, setTradePopUp] = useState(false);
+  const { user, isSignedIn}= useUser();
+
+  useEffect(() => {
+    if (user && isSignedIn) {
+        console.log("Fetching balance for user ID:", user.id);
+        axios.get(`http://127.0.0.1:5000/get_balance/${user.id}`)
+            .then(response => {
+                console.log("Balance fetched:", response.data.balance); 
+                setBalance(response.data.balance);
+            })
+            .catch(error => {
+                console.error('Failed to fetch balance:', error);
+            });
+    } else {
+        console.log("User not signed in or user ID not available");
+    }
+}, [user, isSignedIn]);
+
   useEffect(() => {
     const fetchCompanyDetails = async () => {
         try {
@@ -38,10 +60,6 @@ function TradingPage() {
     Update the users currency when the user purchases more currency. 
     Make a get request to retrive the current state of the users current currency
     */
-    const [balance, setBalance] = useState(0.00);
-    const [currPopUp, setCurrPopUp] = useState(false);
-    const [tradePopUp, setTradePopUp] = useState(false);
-
     return (
         <div className='min-h-screen flex flex-col bg-background'>
             <LPNavBar/>
