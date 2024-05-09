@@ -10,7 +10,7 @@ function StockChart({ ticker }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/history/${ticker}?interval=${interval}&period=${period}`);
+        const response = await axios.get(`/api/history/${ticker}?interval=${interval}&period=${period}`);
         setData(response.data);
       } catch (error) {
         console.error('Failed to fetch data', error);

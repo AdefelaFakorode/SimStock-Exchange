@@ -14,7 +14,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-# Enable CORS for all domains and all routes
 CORS(app)
 
 logging.basicConfig(level=logging.DEBUG)
@@ -54,7 +53,6 @@ def proxy_search():
 
 @app.route('/history/<ticker>')
 def history(ticker):
-    # Retrieve period and interval from query parameters with default values
     period = request.args.get('period', '1y')
     interval = request.args.get('interval', '1d')
     try:
