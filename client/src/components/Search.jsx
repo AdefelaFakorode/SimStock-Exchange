@@ -14,7 +14,7 @@ function Search({ setTicker }) {
       if (input.length > 2) {
         setIsLoading(true);
         try {
-          const response = await axios.get(`/api/search?q=${input}`);
+          const response = await axios.get(`/search?q=${input}`);
           const data = response.data;
           setIsLoading(false);
           if (Array.isArray(data.quotes)) {
