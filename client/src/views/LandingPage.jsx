@@ -1,4 +1,6 @@
 import SM_Logo from "../assets/SM_Logo.png";
+import MD_Logo from "../assets/MD_Logo.png";
+
 import LPNavBar from "../components/LSI_NavBar/LPNavBar";
 import Footer from "../components/LSI_NavBar/LSI_Footer.jsx";
 import { Link } from "react-router-dom";
@@ -13,7 +15,7 @@ function LandingPage() {
           {/* Image */}
           <div className="flex-1 flex justify-center lg:justify-center">
             <img
-              src={SM_Logo}
+              src={MD_Logo}
               alt="SimStock Logo"
               className=" xl:size-[500px] size-[350px] rounded-2xl hovering-spinning-logo "
             />
