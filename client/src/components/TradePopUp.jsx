@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price, currency, change }) {
+function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price, currency, change, handleBuyStock }) {
     const [popupType, setPopupType] = useState('buy');
     const [insufficientShares, setInsufficientShares] = useState(false);
     const [sellAmount, setSellAmount] = useState('');
@@ -70,11 +70,42 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
         }
     }
 
+    // function handleOnBuy() {
+    //     let amount = parseFloat(purchaseAmount);
+
+    //     if (isNaN(amount)) {
+    //         amount = 0.0;
+    //         setInput(true);
+    //         return;
+    //     }
+
+    //     if (balance < amount) {
+    //         setInsufFunds(true);
+    //         return;
+    //     } else {
+    //         setBalance((parseFloat(balance) - amount).toFixed(2));
+    //     }
+
+    //     onClose();
+    // }
+
+    // function handleOnBuy() {
+    //     let amount = parseFloat(purchaseAmount);
+    //     if (isNaN(amount) || balance < amount) {
+    //         setInput(true);
+    //         setInsufFunds(balance < amount);
+    //         return;
+    //     }
+
+    //     // Assuming stock is purchased, update balance and stock list
+    //     setBalance((parseFloat(balance) - amount).toFixed(2));
+    //     handleBuyStock({ symbol: symbol, name: symbol, quantity: numShares, boughtAt: price });
+    //     onClose();
+    // }  
+
     function handleOnBuy() {
         let amount = parseFloat(purchaseAmount);
-
-        if (isNaN(amount)) {
-            amount = 0.0;
+        if (isNaN(amount) || amount <= 0) {
             setInput(true);
             return;
         }
@@ -82,23 +113,19 @@ function TradePopup({ onClose, balance, setBalance, changePercent, symbol, price
         if (balance < amount) {
             setInsufFunds(true);
             return;
-        } else {
-            setBalance((parseFloat(balance) - amount).toFixed(2));
         }
+
+        setBalance(prevBalance => (prevBalance - amount).toFixed(2));
+
+        const stock = {
+            symbol: symbol,
+            quantity: numShares,
+            boughtAt: price
+        };
+
+        handleBuyStock(stock);
 
         onClose();
-    }
-
-    function handleSellAmountChange(e) {
-        const amount = parseFloat(e.target.value);
-        setSellAmount(e.target.value);
-
-        if (!isNaN(amount)) {
-            setNumShares((amount / price).toFixed(2));
-            setInputError(false);
-        } else {
-            setNumShares('');
-        }
     }
 
     function handleOnSell() {

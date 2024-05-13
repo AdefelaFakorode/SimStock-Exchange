@@ -54,10 +54,16 @@ function TradingPage() {
         fetchCompanyDetails();
     }, [ticker]);
 
-    const handleBuyStock = (stock) => {
-        // Add the bought stock to the user's stocks
+    // const handleBuyStock = (stock) => {
+    //     // Add the bought stock to the user's stocks
+    //     setUserStocks(userStocks => [...userStocks, stock]);
+    // };
+
+    // This function updates the stock list when a new stock is purchased.
+    function handleBuyStock(stock) {
         setUserStocks(prevStocks => [...prevStocks, stock]);
-    };
+    }
+
 
     return (
         <div className='min-h-screen flex flex-col bg-background'>
@@ -66,10 +72,9 @@ function TradingPage() {
             <div className="flex justify-between items-center p-4 text-black">
                 <h3 className="text-lg font-semibold text-white">Total Balance: ${balance}</h3>
                 <div className='flex justify-end items-end'>
-                    <button onClick={() => setCurrPopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2">Deposit</button>
-                    <button onClick={() => setTradePopUp(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded mx-2">Trade</button>
-                    {/* Button to toggle past trades popup */}
-                    <button onClick={() => setShowPastTrades(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2">Past Trades</button>
+                    <button onClick={() => setCurrPopUp(true)} className="rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform mx-2">Deposit</button>
+                    <button onClick={() => setTradePopUp(true)} className="rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform mx-2">Buy/Sell</button>
+                    <button onClick={() => setShowPastTrades(true)} className="rounded bg-buttonColor hover:bg-hoverButtonColor text-black font-medium py-2 px-4 transition duration-300 ease-in-out transform">Past Trades</button>
                 </div>
             </div>
 
@@ -109,15 +114,15 @@ function TradingPage() {
 
                 {tradePopUp && (
                     <TradePopUp
-                        onClose={() => setTradePopUp(false)}
-                        balance={balance}
-                        setBalance={setBalance}
-                        handleBuyStock={handleBuyStock} // Pass the function to handle buying stock
-                        changePercent={companyDetails.changePercent}
-                        symbol={companyDetails.symbol}
-                        price={companyDetails.currentPrice}
-                        currency={companyDetails.currency}
-                        change={companyDetails.change}
+                    onClose={() => setTradePopUp(false)}
+                    balance={balance}
+                    setBalance={setBalance}
+                    handleBuyStock={handleBuyStock} // Ensure this matches the prop used in TradePopup
+                    changePercent={companyDetails.changePercent}
+                    symbol={companyDetails.symbol}
+                    price={companyDetails.currentPrice}
+                    currency={companyDetails.currency}
+                    change={companyDetails.change}
                     />
                 )}
 
