@@ -52,30 +52,41 @@ function CurrencyPopUp({ onClose, balance, setBalance }) {
         }
     }
 
-    function handleOnConfirm() {
-        const inputElement = document.getElementById('Curr-PopUp');
-        let amount = parseFloat(inputElement.value);
+    // function handleOnConfirm() {
+    //     const inputElement = document.getElementById('Curr-PopUp');
+    //     let amount = parseFloat(inputElement.value);
 
-        if (isNaN(amount) || amount <= 0) {
-            alert('Please enter a valid amount'); // Adding user feedback
-            return;
+    //     if (isNaN(amount) || amount <= 0) {
+    //         alert('Please enter a valid amount'); // Adding user feedback
+    //         return;
+    //     }
+
+    //     axios.post('http://127.0.0.1:5000/buy_currency', { user_id: user.id, amount: amount }, {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //     .then(response => {
+    //         console.log('Transaction successful:', response.data);
+    //         setBalance(response.data.new_balance); 
+    //         onClose();
+    //     })
+    //     .catch(error => {
+    //         console.error('Error purchasing currency:', error.response ? error.response.data.error : 'Unknown error');
+    //         alert(error.response ? error.response.data.error : 'Failed to process transaction');
+    //     });
+    
+    // }
+
+    function handleOnConfirm() {
+        let amount = parseFloat(document.getElementById('Curr-PopUp').value);
+
+        if (isNaN(amount)) {
+            amount = 0.00;
         }
 
-        axios.post('http://127.0.0.1:5000/buy_currency', { user_id: user.id, amount: amount }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            console.log('Transaction successful:', response.data);
-            setBalance(response.data.new_balance); 
-            onClose();
-        })
-        .catch(error => {
-            console.error('Error purchasing currency:', error.response ? error.response.data.error : 'Unknown error');
-            alert(error.response ? error.response.data.error : 'Failed to process transaction');
-        });
-    
+        setBalance((parseFloat(balance) + amount).toFixed(2));
+        onClose();
     }
     
     return (
